@@ -1,3 +1,5 @@
+from __future__ import division
+import time
 import soduko_ninja
 
 extreme_test_puzzle = [[ 5, [], [], [], [],  3,  6, [], []],
@@ -36,9 +38,30 @@ empty_test_puzzle =   [[[], [], [], [], [], [], [], [], []],
                        [[], [], [], [], [], [], [], [], []],
                        [[], [], [], [], [], [], [], [], []],
                        [[], [], [], [], [], [], [], [], []]]
+escargot_test_puzzle =[[ 1, [], [], [], [],  7, [],  9, []],
+                       [[],  3, [], [],  2, [], [], [],  8],
+                       [[], [],  9,  6, [], [],  5, [], []],
+                       [[], [],  5,  3, [], [],  9, [], []],
+                       [[],  1, [], [],  8, [], [], [],  2],
+                       [ 6, [], [], [], [],  4, [], [], []],
+                       [ 3, [], [], [], [], [], [],  1, []],
+                       [[],  4,  1, [], [], [], [], [],  7],
+                       [[], [],  7, [], [], [],  3, [], []]]
+jdn_test_puzzle =     [[ 8, [], [], [], [], [], [], [], []],
+                       [[], [],  3,  6, [], [], [], [], []],
+                       [[],  7, [], [],  9, [],  2, [], []],
+                       [[],  5, [], [], [],  7, [], [], []],
+                       [[], [], [], [],  4,  5,  7, [], []],
+                       [[], [], [],  1, [], [], [],  3, []],
+                       [[], [],  1, [], [], [], [],  6,  8],
+                       [[], [],  8,  5, [], [], [],  1, []],
+                       [[],  9, [], [], [], [],  4, [], []]]
 
 if __name__ == '__main__':
-    test_puzzle = extreme_test_puzzle
+    test_puzzle = jdn_test_puzzle
     soduko_ninja.print_soduko(test_puzzle)
+    start_time = time.clock()
     result = soduko_ninja.solve(test_puzzle)
+    stop_time = time.clock()
     soduko_ninja.print_soduko(result)
+    print 'Solving took {} ms.'.format((stop_time-start_time)*1000)
